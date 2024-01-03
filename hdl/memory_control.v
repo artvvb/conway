@@ -204,9 +204,9 @@ module memory_control #(
     ) read_addr_x0_counter (
         .clk         (clk),
         .resetn      (resetn),
-        .enable      (),
-        .count       (),
-        .carry       ()
+        .enable      (read_addr_x0_counter_enable),
+        .count       (read_addr_x0_counter_count),
+        .carry       (read_addr_x0_counter_carry)
     );
     
     // x_block_counter,

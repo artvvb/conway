@@ -8,7 +8,7 @@
 */
 
 module memory_control #(
-    parameter integer ADDR_WIDTH = 4,
+    parameter integer ADDR_WIDTH = 2,
     parameter integer HEIGHT_PIXELS = 6,
     parameter integer WIDTH_PIXELS = 6,
     parameter integer HEIGHT_BLOCKS = 2, // HEIGHT_PIXELS / PIXELS_PER_BLOCK
@@ -32,7 +32,8 @@ module memory_control #(
     output wire [ADDR_WIDTH-1:0] read_addr_5,
     output wire [ADDR_WIDTH-1:0] read_addr_6,
     output wire [ADDR_WIDTH-1:0] read_addr_7,
-    output wire [ADDR_WIDTH-1:0] read_addr_8
+    output wire [ADDR_WIDTH-1:0] read_addr_8,
+    output wire frame_buffer_select
 );
     // counter #(
     //     .WIDTH       (),
@@ -117,6 +118,17 @@ module memory_control #(
         .carry       (y_block_counter_carry)
     );
     
+    reg frame_buffer_select_reg;
+    always @(posedge clk) begin
+        if (resetn == 1'b0) begin
+            frame_buffer_select_reg <= 'b0;
+        end else if (y_block_counter_carry == 1'b1 && y_block_counter_enable == 1'b1) begin
+            frame_buffer_select_reg <= ~frame_buffer_select_reg;
+        end
+    end
+
+    frame_buffer_select <= frame_buffer_select_reg;
+
     // ====== Pixel Compares ======
 
     wire [PIXELS_PER_BLOCK-1:0] center_y;

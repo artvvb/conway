@@ -1,6 +1,6 @@
 #! vivado -mode batch -source build.tcl -tclargs ./blinky.bit
 set script_dir [file normalize [file dirname [info script]]]
-set hdl_dir [file normalize "${script_dir}/../hdl"]
+set hdl_dir [file normalize "${script_dir}/hdl"]
 
 # read all design files
 foreach f [glob -nocomplain ${hdl_dir}/*.v] {

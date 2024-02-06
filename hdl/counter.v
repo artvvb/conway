@@ -1,6 +1,3 @@
-`timescale 1ns / 1ps
-`default_nettype none
-
 module counter #(
     parameter integer WIDTH = 8,
     parameter [WIDTH-1:0] MAX_VALUE = 100, // not inclusive

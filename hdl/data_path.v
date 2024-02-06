@@ -1,5 +1,5 @@
-`timescale 1ns / 1ps
-`default_nettype none
+`include "hdl/bram.v"
+`include "hdl/conway.v"
 
 module data_path #(
     parameter integer ADDR_WIDTH = 2,
@@ -75,7 +75,7 @@ module data_path #(
     genvar frame_buffer_i;
 
     generate
-        for (bram_0 = 0; bram_0 < 9; bram_0 = bram_0 + 1) begin
+        for (bram_i = 0; bram_i < 9; bram_i = bram_i + 1) begin
             for (frame_buffer_i = 0; frame_buffer_i < 2; frame_buffer_i = frame_buffer_i + 1) begin
                 bram #(
                     .DATA_WIDTH (1),

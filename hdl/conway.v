@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module conway (
     input wire center_value,
     input wire [7:0] neighbor_values,

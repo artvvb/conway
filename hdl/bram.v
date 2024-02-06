@@ -1,6 +1,3 @@
-`timescale 1ns / 1ps
-`default_nettype none
-
 module bram #(
     parameter integer DATA_WIDTH = 8,
     parameter integer DEPTH = 200,

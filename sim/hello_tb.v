@@ -7,7 +7,7 @@ module hello_tb;
     hello hello_inst (A, B);
     
     initial begin
-        $dumpfile("hello_tb.vcd");
+        $dumpfile("sim/hello_tb.vcd");
         $dumpvars(0, hello_tb);
         
         A = 0;

@@ -18,7 +18,7 @@ module counter #(
             count <= RESET_VALUE;
         end else if (enable == 1'b1) begin
             if (carry == 1'b1) begin
-                count <= RESET_VALUE
+                count <= RESET_VALUE;
             end else begin
                 count <= count + 1'b1;
             end

@@ -13,7 +13,7 @@ module memory_control #(
     parameter integer HEIGHT_BLOCKS = 2, // HEIGHT_PIXELS / PIXELS_PER_BLOCK
     parameter integer WIDTH_BLOCKS = 2,  // WIDTH_PIXELS / PIXELS_PER_BLOCK
     parameter integer PIXELS_PER_BLOCK = 3, // do not change
-    parameter integer PIXEL_COUNTER_WIDTH, = 2 //$clog2(PIXELS_PER_BLOCK-1)
+    parameter integer PIXEL_COUNTER_WIDTH = 2, //$clog2(PIXELS_PER_BLOCK-1)
     parameter integer BLOCK_Y_COUNTER_WIDTH = 1, //$clog2(HEIGHT_BLOCKS-1)
     parameter integer BLOCK_X_COUNTER_WIDTH = 1 //$clog2(WIDTH_BLOCKS-1)
 ) (
@@ -126,7 +126,7 @@ module memory_control #(
         end
     end
 
-    frame_buffer_select <= frame_buffer_select_reg;
+    assign frame_buffer_select = frame_buffer_select_reg;
 
     // ====== Pixel Compares ======
 
@@ -135,12 +135,12 @@ module memory_control #(
     wire [PIXELS_PER_BLOCK*PIXELS_PER_BLOCK-1:0] x_out_of_bounds;
     wire [PIXELS_PER_BLOCK*PIXELS_PER_BLOCK-1:0] y_out_of_bounds;
     
-    assign center_x[0] = (x_pixel_counter == 2'd0) ? 1'b1 : 1'b0;
-    assign center_x[1] = (x_pixel_counter == 2'd1) ? 1'b1 : 1'b0;
-    assign center_x[2] = (x_pixel_counter == 2'd2) ? 1'b1 : 1'b0;
-    assign center_y[0] = (y_pixel_counter == 2'd0) ? 1'b1 : 1'b0;
-    assign center_y[1] = (y_pixel_counter == 2'd1) ? 1'b1 : 1'b0;
-    assign center_y[2] = (y_pixel_counter == 2'd2) ? 1'b1 : 1'b0;
+    assign center_x[0] = (x_pixel_counter_count == 2'd0) ? 1'b1 : 1'b0;
+    assign center_x[1] = (x_pixel_counter_count == 2'd1) ? 1'b1 : 1'b0;
+    assign center_x[2] = (x_pixel_counter_count == 2'd2) ? 1'b1 : 1'b0;
+    assign center_y[0] = (x_pixel_counter_count == 2'd0) ? 1'b1 : 1'b0;
+    assign center_y[1] = (x_pixel_counter_count == 2'd1) ? 1'b1 : 1'b0;
+    assign center_y[2] = (x_pixel_counter_count == 2'd2) ? 1'b1 : 1'b0;
 
     assign write_enable[0] = center_x[0] & center_y[0];
     assign write_enable[1] = center_x[1] & center_y[0];
@@ -168,7 +168,7 @@ module memory_control #(
     wire write_addr_x_counter_enable = x_pixel_counter_enable & x_pixel_counter_carry;
     wire write_addr_x_counter_carry;
     
-    wire [ADDR_WIDTH-1:0] write_addr_x_counter_count;
+    wire [ADDR_WIDTH-1:0] write_addr_y_counter_count;
     wire write_addr_y_counter_enable = y_pixel_counter_enable & y_pixel_counter_carry;
     wire write_addr_y_counter_carry;
 

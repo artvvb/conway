@@ -2,4 +2,8 @@ heightmap.ipynb
 indexing.ipynb
 memory_strobes.v
 noise.ipynb
-sim_proj/*
+sim/*
+!sim/*.v
+hdl/*
+!hdl/*.v
+!hdl/*.xdc

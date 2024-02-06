@@ -32,15 +32,15 @@ module data_path #(
 
     wire write_data;
 
-    wire frame_buffer_write_enable[1:0];
-    wire frame_buffer_read_enable[1:0];
+    wire [1:0] frame_buffer_write_enable;
+    wire [1:0] frame_buffer_read_enable;
     assign frame_buffer_write_enable[0] = frame_buffer_0_write_select ^ frame_buffer_select;
     assign frame_buffer_write_enable[1] = ~frame_buffer_write_enable[0];
     assign frame_buffer_read_enable = ~frame_buffer_write_enable;
 
     reg [1:0] frame_buffer_write_enable_last;
     reg [1:0] frame_buffer_read_enable_last;
-    reg write_enable_last[8:0];
+    reg [8:0] write_enable_last;
     always @(posedge clk) begin
         if (resetn == 1'b0) begin
             frame_buffer_write_enable_last <= 1'b0;
@@ -53,7 +53,7 @@ module data_path #(
         end
     end // maybe shouldn't be doing lasts in here?
 
-    // wire [8:0] center_select = write_enable_last; // center needs to be one cycle ahead of write_enable
+    wire [8:0] center_select = write_enable_last; // FIXME: center needs to be one cycle ahead of write_enable
     wire [8:0] frame_buffer_read_data [1:0];
 
     wire [ADDR_WIDTH-1:0] read_addr [8:0];
@@ -69,7 +69,7 @@ module data_path #(
     
     reg center_value;
     wire [8:0] read_data;
-    wire [7:0] neighbor_values;
+    reg [7:0] neighbor_values;
 
     genvar bram_i;
     genvar frame_buffer_i;

@@ -18,13 +18,13 @@ module conway (
 
     always @(*) begin
         if (center_value == 1'b0) begin
-            if (neighbor_weight == 4'd3) begin
+            if (neighbor_value_weight == 4'd3) begin
                 data_out = 1'b1;
             end
         end else begin
-            if (neighbor_weight < 4'd2) begin
+            if (neighbor_value_weight < 4'd2) begin
                 data_out = 1'b0;
-            end else if (neighbor_weight > 4'd3) begin
+            end else if (neighbor_value_weight > 4'd3) begin
                 data_out = 1'b0;
             end else begin
                 data_out = 1'b1;

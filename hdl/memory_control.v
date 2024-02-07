@@ -1,5 +1,3 @@
-`include "hdl/counter.v"
-
 /*
     Terminology:
         Pixel: one memory address in one memory.

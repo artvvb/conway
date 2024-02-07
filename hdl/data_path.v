@@ -1,6 +1,3 @@
-`include "hdl/bram.v"
-`include "hdl/conway.v"
-
 module data_path #(
     parameter integer ADDR_WIDTH = 2,
     parameter integer HEIGHT_PIXELS = 6,

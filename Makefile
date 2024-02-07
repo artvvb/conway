@@ -1,7 +1,7 @@
 # hello_tb.vcd: hello_tb.vvp
 # 	vvp hello_tb.vvp
 # hello_tb.vvp: hello_tb.v hello.v
-# 	iverilog -o hello_tb.vvp hello_tb.v
+# 	iverilog -o hello_tb.vvp -f hello_tb.f hello_tb.v
 
 TB_FILES := $(wildcard sim/*.v)
 SOURCES := $(wildcard hdl/*.v)
@@ -25,8 +25,9 @@ bit: $(BIT_FILE)
 .PHONY: bit
 
 # Create dump files for GTKWave using IVerilog
-$(VVP_FILES): sim/%.vvp: sim/%.v
-	iverilog -o $@ $<
+# -f and f file have to come first so that they are sequential
+$(VVP_FILES): sim/%.vvp: sim/%.f sim/%.v
+	iverilog -o $@ -f $?
 $(VCD_FILES): sim/%.vcd: sim/%.vvp
 	vvp $<
 

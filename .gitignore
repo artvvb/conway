@@ -4,6 +4,7 @@ memory_strobes.v
 noise.ipynb
 sim/*
 !sim/*.v
+!sim/*.f
 hdl/*
 !hdl/*.v
 !hdl/*.xdc

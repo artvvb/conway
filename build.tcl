@@ -4,10 +4,19 @@ set hdl_dir [file normalize "${script_dir}/hdl"]
 
 # read all design files
 foreach f [glob -nocomplain ${hdl_dir}/*.v] {
-    read_verilog ${f}
+    if {![string match ${f} "*_tb.*"]} {
+        read_verilog ${f}
+    }
+}
+foreach f [glob -nocomplain ${hdl_dir}/*.sv] {
+    if {![string match ${f} "*_tb.*"]} {
+        read_verilog ${f}
+    }
 }
 foreach f [glob -nocomplain ${hdl_dir}/*.vhd] {
-    read_vhdl ${f}
+    if {![string match ${f} "*_tb.*"]} {
+        read_vhdl ${f}
+    }
 }
 # read constraints
 foreach f [glob -nocomplain ${hdl_dir}/*.xdc] {

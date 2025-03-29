@@ -34,19 +34,6 @@ module memory_control #(
     output wire [ADDR_WIDTH-1:0] read_addr_8,
     output wire frame_buffer_select
 );
-    // counter #(
-    //     .WIDTH       (),
-    //     .MAX_VALUE   (),
-    //     .INCREMENT   (),
-    //     .RESET_VALUE ()
-    // ) x_pixel_counter (
-    //     .clk         (clk),
-    //     .resetn      (resetn),
-    //     .enable      (),
-    //     .count       (),
-    //     .carry       ()
-    // );
-
     // ====== Base Pixel/Block Counters ======
     
     wire [PIXEL_COUNTER_WIDTH-1:0] x_pixel_counter_count;
@@ -295,4 +282,17 @@ module memory_control #(
         .count       (read_addr_y2_counter_count),
         .carry       (read_addr_y2_counter_carry)
     );
+    
+    // get_write_addr = lambda: x_write_addr_counter.get_state() + y_write_addr_counter.get_state()
+    assign write_addr = write_addr_x_counter_count + write_addr_y_counter_count;
+    // get_read_addr = lambda y, x: read_addr_x_counters[x].get_count() + read_addr_y_pixel_counters[y].get_count()
+    assign read_addr_0 = read_addr_x0_counter_count + read_addr_y0_counter_count;
+    assign read_addr_1 = read_addr_x1_counter_count + read_addr_y0_counter_count;
+    assign read_addr_2 = read_addr_x2_counter_count + read_addr_y0_counter_count;
+    assign read_addr_3 = read_addr_x0_counter_count + read_addr_y1_counter_count;
+    assign read_addr_4 = read_addr_x1_counter_count + read_addr_y1_counter_count;
+    assign read_addr_5 = read_addr_x2_counter_count + read_addr_y1_counter_count;
+    assign read_addr_6 = read_addr_x0_counter_count + read_addr_y2_counter_count;
+    assign read_addr_7 = read_addr_x1_counter_count + read_addr_y2_counter_count;
+    assign read_addr_8 = read_addr_x2_counter_count + read_addr_y2_counter_count;
 endmodule

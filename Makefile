@@ -1,31 +1,25 @@
-# hello_tb.vcd: hello_tb.vvp
-# 	vvp hello_tb.vvp
-# hello_tb.vvp: hello_tb.v hello.v
-# 	iverilog -o hello_tb.vvp hello_tb.v
+HDL_FILES := $(wildcard hdl/*.sv)
+TB_FILES := $(wildcard hdl/*_tb.sv)
 
-TB_FILES := $(wildcard sim/*.v)
-VVP_FILES := $(addsuffix .vvp, $(basename $(TB_FILES)))
-VCD_FILES := $(addsuffix .vcd, $(basename $(TB_FILES)))
-OBJ_FILES := $(VVP_FILES) $(VCD_FILES)
-TOP_FILE := hdl/top.v
-BIT_FILE := hdl/top.bit
-BUILD_SCRIPT := build.tcl
-
-sim: $(OBJ_FILES)
+sim: xsim.dir/counter_tb_snapshot.wdb
 .PHONY: sim
 
 bit: $(BIT_FILE)
 .PHONY: bit
 
-# Create dump files for GTKWave using IVerilog
-$(VVP_FILES): sim/%.vvp: sim/%.v
-	iverilog -o $@ $<
-$(VCD_FILES): sim/%.vcd: sim/%.vvp
-	vvp $<
-
+xsim.dir/work/counter.sdb: hdl/counter.sv
+	xvlog --sv hdl/counter.sv
+xsim.dir/work/counter_tb.sdb: hdl/counter_tb.sv
+	xvlog --sv hdl/counter_tb.sv
+xsim.dir/counter_tb_snapshot.wdb: xsim.dir/work/counter_tb.sdb xsim.dir/work/counter.sdb
+	xelab --debug typical --top counter_tb --snapshot counter_tb_snapshot
+	xsim counter_tb_snapshot --tclbatch xsim_cfg.tcl
+ 
 # Make a bitstream in Vivado
-$(BIT_FILE): $(wildcard hdl/*)
-	vivado -mode batch -source $(BUILD_SCRIPT) -tclargs $(BIT_FILE)
+top.bit: $(wildcard hdl/*)
+	vivado -mode batch -source build.tcl -tclargs top.bit
 
 clean:
-	rm -f $(OBJ_FILES)
+	rm -rf xsim.dir
+	rm -f top.bit
+	rm -f counter_tb_snapshot.wdb

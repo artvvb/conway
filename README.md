@@ -10,6 +10,8 @@
 - Make sure the "default" kernel is selected in the top right corner
 - Run each of the code blocks by clicking their play icons
 
+[for digital plotting in pyplot](https://stackoverflow.com/questions/20036161/can-we-draw-digital-waveform-graph-with-pyplot-in-python-or-matlab)
+
 # Simulation
 Environment setup (git bash with make on windows):
 - install vivado and get it on path

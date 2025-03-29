@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="counter_tb_snapshot.wdb" id="1">
+         <top_modules>
+            <top_module name="counter_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="479.033 ns"></ZoomEndTime>
+      <Cursor1Time time="405.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="group15" type="group">
+      <obj_property name="label">tb</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/counter_tb/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/enable" type="logic">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/count" type="array">
+         <obj_property name="ElementShortName">count[3:0]</obj_property>
+         <obj_property name="ObjectShortName">count[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/carry" type="logic">
+         <obj_property name="ElementShortName">carry</obj_property>
+         <obj_property name="ObjectShortName">carry</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group16" type="group">
+      <obj_property name="label">dut</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/counter_tb/dut/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/enable" type="logic">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/count" type="array">
+         <obj_property name="ElementShortName">count[3:0]</obj_property>
+         <obj_property name="ObjectShortName">count[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/carry" type="logic">
+         <obj_property name="ElementShortName">carry</obj_property>
+         <obj_property name="ObjectShortName">carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/width" type="array">
+         <obj_property name="ElementShortName">width[31:0]</obj_property>
+         <obj_property name="ObjectShortName">width[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/max_value" type="array">
+         <obj_property name="ElementShortName">max_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">max_value[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/increment" type="array">
+         <obj_property name="ElementShortName">increment[31:0]</obj_property>
+         <obj_property name="ObjectShortName">increment[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/counter_tb/dut/reset_value" type="array">
+         <obj_property name="ElementShortName">reset_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reset_value[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

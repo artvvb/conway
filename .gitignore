@@ -5,7 +5,6 @@
 !*.ipynb
 !environment.yml
 !Makefile
-!xsim_cfg.tcl
 
 !hdl/
 hdl/*
@@ -13,3 +12,9 @@ hdl/*
 !hdl/*.v
 !hdl/*.vhd
 !hdl/*.xdc
+
+!sim/
+sim/*
+!xsim_cfg.tcl
+!xsim_cfg_gui.tcl
+!*.wcfg

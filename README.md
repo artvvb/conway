@@ -17,7 +17,7 @@ Environment setup (git bash with make on windows):
 - https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058
 
 - `make sim` generates simulation snapshots for each testbench in the hdl folder, as noted with _tb suffix.
-- `xsim --gui <module>_tb_snapshot.wdb` opens the simulator ui.
+- `make gui` opens the simulator ui and loads the sim snapshot.
 - More info: https://www.itsembedded.com/dhd/vivado_sim_1/
 
 # Synthesis & Implementation

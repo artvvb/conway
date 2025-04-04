@@ -10,7 +10,7 @@ module counter #(
     output logic [width-1:0] count = reset_value,
     output logic carry
 );
-    always_ff @( clk ) begin : counter_inst
+    always_ff @( posedge clk ) begin : counter_inst
         if (reset) begin
             count <= reset_value;
         end else if (enable) begin

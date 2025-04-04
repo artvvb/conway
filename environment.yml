@@ -8,5 +8,3 @@ dependencies:
   - matplotlib
   - numpy
   - pip
-  - pip:
-    - git+https://github.com/pvigier/perlin-numpy#egg=perlin-numpy

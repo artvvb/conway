@@ -5,7 +5,7 @@ set hdl_dir [file normalize "${script_dir}/hdl"]
 set index_last [expr [llength ${argv}] - 1]
 set top_module_name [lindex ${argv} ${index_last}]
 
-# read SystemVerilog design files and include by 
+# read top SystemVerilog design file and referenced includes
 read_verilog -sv [file join $hdl_dir ${top_module_name}.sv]
 
 # read constraints

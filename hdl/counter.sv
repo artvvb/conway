@@ -1,3 +1,6 @@
+`ifndef COUNTER_SV
+`define COUNTER_SV
+
 module counter #(
     parameter integer width = 8,
     parameter integer max_value = 100, // not inclusive
@@ -24,3 +27,5 @@ module counter #(
 
     assign carry = (count + increment >= max_value) ? 1'b1 : 1'b0;
 endmodule
+
+`endif

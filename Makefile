@@ -18,12 +18,17 @@ xsim.dir/counter_tb_snapshot.wdb: xsim.dir/work/counter_tb.sdb xsim.dir/work/cou
 
 # Make a bitstream in Vivado
 top.bit: $(wildcard hdl/*)
-	vivado -mode batch -source build.tcl -tclargs top.bit
+	vivado -mode batch -source build.tcl -tclargs top
 
 clean:
 	rm -rf xsim.dir
 	rm -f top.bit
 	rm -f counter_tb_snapshot.wdb
+	rm -f *.log
+	rm -f *.jou
+	rm -f *.pb
+
+clean_logs:
 	rm -f *.log
 	rm -f *.jou
 	rm -f *.pb
